@@ -269,13 +269,70 @@ I2C_CCD_Config 		u8	(
 							.I2C_SDAT(GPIO_1[23])
 						);						
 						
-	mysystem u0 (	  
+mysystem u0 (	  
         .sdram_clk_clk                (sdram_ctrl_clk),                //             sdram_clk.clk
         .dram_clk_clk                 (DRAM_CLK),                 //              dram_clk.clk
-        //.d5m_clk_clk                  (CCD_MCLK),                  //               d5m_clk.clk
         .vga_clk_clk                  (VGA_CTRL_CLK),                   //               vga_clk.clk
         .system_pll_0_refclk_clk      (CLOCK_50),      //   system_pll_0_refclk.clk
         .system_pll_0_reset_reset     (1'b0)      //    system_pll_0_reset.reset
 		  );
+		  
+
+    mysystem u0 (
+        .sdram_clk_clk            (sdram_ctrl_clk),   //           sdram_clk.clk
+        .dram_clk_clk             (DRAM_CLK),         //            dram_clk.clk
+        .vga_clk_clk              (VGA_CTRL_CLK),    	//             vga_clk.clk
+        .system_pll_0_refclk_clk  (CLOCK_50),  			// system_pll_0_refclk.clk
+        .system_pll_0_reset_reset (1'b0),			 		//  system_pll_0_reset.reset
+		  
+        .memory_mem_a       (HPS_DDR3_ADDR),   			//      memory.mem_a
+        .memory_mem_ba      (HPS_DDR3_BA),     			//            .mem_ba
+        .memory_mem_ck      (HPS_DDR3_CK_P),   			//            .mem_ck
+        .memory_mem_ck_n    (HPS_DDR3_CK_N),   			//            .mem_ck_n
+        .memory_mem_cke     (HPS_DDR3_CKE),    			//            .mem_cke
+        .memory_mem_cs_n    (HPS_DDR3_CS_N),   			//            .mem_cs_n
+        .memory_mem_ras_n   (HPS_DDR3_RAS_N),  			//            .mem_ras_n
+        .memory_mem_cas_n   (HPS_DDR3_CAS_N),  			//            .mem_cas_n
+        .memory_mem_we_n    (HPS_DDR3_WE_N),   			//            .mem_we_n
+        .memory_mem_reset_n (HPS_DDR3_RESET_N),			//            .mem_reset_n
+        .memory_mem_dq      (HPS_DDR3_DQ),     			//            .mem_dq
+        .memory_mem_dqs     (HPS_DDR3_DQS_P),  			//            .mem_dqs
+        .memory_mem_dqs_n   (HPS_DDR3_DQS_N),  			//            .mem_dqs_n
+        .memory_mem_odt     (HPS_DDR3_ODT),    			//            .mem_odt
+        .memory_mem_dm      (HPS_DDR3_DM),     			//            .mem_dm
+        .memory_oct_rzqin   (HPS_DDR3_RZQ),   			//            .oct_rzqin
+
+        .system_ref_clk_clk       (),       //      system_ref_clk.clk
+        .system_ref_reset_reset   (),   //    system_ref_reset.reset
+		  
+        .hps_start_signal_export  (),  //    hps_start_signal.export
+        .hps_state_out_export     (),     //       hps_state_out.export
+        .hps_digits_out_export    (),    //      hps_digits_out.export
+        .hps_clk_out_export       (),       //         hps_clk_out.export
+
+		  .row_addr_out_export      (),      //        row_addr_out.export
+        .col_addr_out_export      (),      //        col_addr_out.export
+        .row_data_in_export       (),       //         row_data_in.export
+        .col_data_in_export       (),       //         col_data_in.export
+
+        .imgdata_in0_export       (),       //         imgdata_in0.export
+        .imgdata_in1_export       (),       //         imgdata_in1.export
+        .imgdata_in2_export       (),       //         imgdata_in2.export
+        .imgdata_in3_export       (),       //         imgdata_in3.export
+        .imgdata_in4_export       (),       //         imgdata_in4.export
+        .imgdata_in5_export       (),       //         imgdata_in5.export
+        .imgdata_in6_export       (),       //         imgdata_in6.export
+        .imgdata_in7_export       (),       //         imgdata_in7.export
+        .imgdata_in8_export       (),       //         imgdata_in8.export
+        .imgdata_in9_export       (),       //         imgdata_in9.export
+        .imgdata_in10_export      (),      //        imgdata_in10.export
+        .imgdata_in11_export      (),      //        imgdata_in11.export
+        .imgdata_in12_export      (),      //        imgdata_in12.export
+        .imgdata_in13_export      (),      //        imgdata_in13.export
+        .imgdata_in14_export      (),      //        imgdata_in14.export
+        .imgdata_in15_export      (),      //        imgdata_in15.export
+
+    );
+
 	
 endmodule
